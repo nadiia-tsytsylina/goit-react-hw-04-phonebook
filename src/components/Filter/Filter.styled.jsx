@@ -14,6 +14,7 @@ export const Label = styled.label`
   font-size: 20px;
   line-height: 1.2;
   font-weight: 600;
+  color: #191c26;
 `;
 export const Input = styled.input`
   border: 2px solid #ff6c00;
