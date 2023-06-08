@@ -50,14 +50,12 @@ export default function App() {
     } else if (numbers.includes(number)) {
       alert(`${number} is already in contacts`);
     } else {
-      setContacts(prevState => [...prevState, newContact]);
+      setContacts(state => [...state, newContact]);
     }
   };
 
   const deleteContact = contactId => {
-    setContacts(prevState =>
-      prevState.filter(contact => contact.id !== contactId)
-    );
+    setContacts(state => state.filter(contact => contact.id !== contactId));
   };
 
   const getFilteredNames = () => {
