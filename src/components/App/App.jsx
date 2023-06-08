@@ -6,35 +6,14 @@ import Filter from '../Filter/Filter';
 import ContactsList from '../ContactsList/ContactsList';
 
 export default function App() {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState(() => {
+    return JSON.parse(window.localStorage.getItem('contacts')) ?? [];
+  });
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
-    const parsedContacts = JSON.parse(localStorage.getItem('contacts'));
-    console.log('first build');
-    if (parsedContacts) {
-      setContacts([...parsedContacts]);
-    }
-  }, []);
-
-  useEffect(() => {
-    console.log('contacts did change');
-    localStorage.setItem('contacts', JSON.stringify(contacts));
+    window.localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
-
-  // componentDidMount() {
-  //   const parsedContacts = JSON.parse(localStorage.getItem('contacts'));
-
-  //   if (parsedContacts) {
-  //     this.setState({ contacts: parsedContacts });
-  //   }
-  // }
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (this.state.contacts !== prevState.contacts) {
-  //     localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-  //   }
-  // }
 
   const handleChange = event => {
     setFilter(event.currentTarget.value);
