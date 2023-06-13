@@ -7,7 +7,8 @@ import ContactsList from '../ContactsList/ContactsList';
 import useLocalStorage from 'hooks/useLocalStorage';
 
 export default function App() {
-  const [contacts, setContacts] = useLocalStorage('contacts', []);
+  const key = 'contacts';
+  const [contacts, setContacts] = useLocalStorage(key, []);
   const [filter, setFilter] = useState('');
 
   const handleChange = event => {
